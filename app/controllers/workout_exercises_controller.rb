@@ -8,4 +8,5 @@ class WorkoutExercisesController < ApplicationController
         @workout_exercise = WorkoutExercise.find(params[:id])
         render json: @workout_exercise
       end
+      
 end
