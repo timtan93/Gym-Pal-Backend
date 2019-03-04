@@ -27,4 +27,13 @@ class WorkoutExercisesController < ApplicationController
           render json: {error: 'Workout Exercise not found.'}, status: 404
         end
       end
+      def update
+        @workout_exercise = WorkoutExercise.find_by(id: params[:id])
+        if @workout_exercise
+          @workout_exercise.update(name: params[:name], order: params[:order])
+          render  json: @workout_exercise
+        else 
+          render json: {error: 'workout_exercise not found.'}, status: 404
+        end
+      end
 end
