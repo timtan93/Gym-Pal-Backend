@@ -31,7 +31,7 @@ class WorkoutsController < ApplicationController
       def update 
           @workout = Workout.find_by(id: params[:id])
           if @workout
-            @workout.update(title: params[:name], workout_exercises: params[:workout_exercises])
+            @workout.update(title: params[:name],workoutexercises: params[:workoutexercises] )
             render  json: @workout
           else 
             render json: {error: 'User not found.'}, status: 404
