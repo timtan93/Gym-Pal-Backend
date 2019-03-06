@@ -10,7 +10,7 @@ class WorkoutsController < ApplicationController
       end
 
       def create 
-        @workout = Workout.new(title: params[:title], user_id: params[:user_id])
+        @workout = Workout.new(title: params[:title], user_id: params[:user_id], workoutexercises: params[:workoutexercises])
         if @workout.save 
           render json: @workout 
         else 
