@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     def validate 
       @user = get_current_user
       if @user 
-        render json: {name: @user.name, token: issue_token({id: @user.id}), id: @user.id}
+        render json: {name: @user.name, token: issue_token({id: @user.id}), id: @user.id, email: @user.email, fat: @user.fat, muscle: @user.muscle}
       else
         render json: {error: 'Username/password combination invalid.'}, status: 401
       end 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
 
     def update
-      @user = User.find_by(id: params[:id])
+      @user = User.find_by(id: params[:id], name: params[:name], fat: params[:fat], muscle: params[:muscle], email: params[:email] )
       if @user
         @user.update(name: params[:name])
         render  json: @user
