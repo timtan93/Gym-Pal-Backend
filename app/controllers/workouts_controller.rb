@@ -14,7 +14,7 @@ class WorkoutsController < ApplicationController
         if @workout.save 
           render json: @workout 
         else 
-          render json: {error: 'Unable to create workout.'}, status: 400
+          render json: {error: 'Unable to create workout, as workout needs a name.'}, status: 400
         end 
       end
 
