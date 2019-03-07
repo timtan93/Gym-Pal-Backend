@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     def signin 
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
-        render json: {name: @user.name, token: issue_token({id: @user.id})}
+        render json: {name: @user.name, token: issue_token({id: @user.id}), id: @user.id}
       else 
         render json: {error: 'Username/password combination invalid.'}, status: 401
       end 
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     def validate 
       @user = get_current_user
       if @user 
-        render json: {name: @user.name, token: issue_token({id: @user.id})}
+        render json: {name: @user.name, token: issue_token({id: @user.id}), id: @user.id}
       else
         render json: {error: 'Username/password combination invalid.'}, status: 401
       end 
