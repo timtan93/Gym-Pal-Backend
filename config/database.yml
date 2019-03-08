@@ -23,6 +23,8 @@ default: &default
 
 development:
   <<: *default
+  development:
+
   database: mod4-backend_development
 
   # The specified database role being used to connect to postgres.
