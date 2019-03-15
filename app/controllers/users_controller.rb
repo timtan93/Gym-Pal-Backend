@@ -56,10 +56,11 @@ class UsersController < ApplicationController
     end
 
     def update
-      @user = User.find_by(id: params[:id], name: params[:name], fat: params[:fat], muscle: params[:muscle], email: params[:email] )
+      @user = User.find_by(id: params[:id])
       if @user
-        @user.update(name: params[:name])
+        @user.update(name: params[:name], fat: params[:fat], muscle: params[:muscle] )
         render  json: @user
+
       else 
         render json: {error: 'User not found.'}, status: 404
       end
